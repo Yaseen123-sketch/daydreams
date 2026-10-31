@@ -10,11 +10,11 @@ void setup() {
 
 void draw() {
   background(20);
-  int[] counts = new int[5];   // how many circles so far for each day
+  int[] counts = new int[5];   
 
   for (TableRow row : table.rows()) {
     int d = dayIndex(row.getString("day"));
-    if (d == -1) continue;     // skip anything that isn't Mon-Fri
+    if (d == -1) continue;     
 
     float mins = row.getFloat("duration");
     float x = map(d, 0, 4, 120, width - 120);
@@ -24,9 +24,16 @@ void draw() {
     fill(lessonColor(row.getString("lesson_type")));
     ellipse(x, y, sizeFor(mins), sizeFor(mins));
   }
+    fill(255);
+  textSize(14);
+  textAlign(CENTER);
+  for (int i = 0; i < days.length; i++) {
+    text(days[i], map(i, 0, 4, 120, width - 120), height - 10);
+  }
+    
 }
 
-// Methods that return a value
+
 int dayIndex(String day) {
   for (int i = 0; i < days.length; i++) {
     if (days[i].equals(day)) {
