@@ -10,11 +10,11 @@ void setup() {
 
 void draw() {
   background(20);
-  int[] counts = new int[5];   
+  int[] counts = new int[5];
 
   for (TableRow row : table.rows()) {
     int d = dayIndex(row.getString("day"));
-    if (d == -1) continue;     
+    if (d == -1) continue;
 
     float mins = row.getFloat("duration");
     float x = map(d, 0, 4, 120, width - 120);
@@ -24,13 +24,28 @@ void draw() {
     fill(lessonColor(row.getString("lesson_type")));
     ellipse(x, y, sizeFor(mins), sizeFor(mins));
   }
-    fill(255);
+  fill(255);
   textSize(14);
   textAlign(CENTER);
   for (int i = 0; i < days.length; i++) {
     text(days[i], map(i, 0, 4, 120, width - 120), height - 10);
   }
-    
+
+  textAlign(LEFT);
+  fill(lessonColor("Lecture"));
+  ellipse(30, 30, 14, 14);
+  fill(255);
+  text("Lecture", 45, 35);
+
+  fill(lessonColor("Seminar"));
+  ellipse(30, 55, 14, 14);
+  fill(255);
+  text("Seminar", 45, 60);
+
+  fill(lessonColor("Online"));
+  ellipse(30, 80, 14, 14);
+  fill(255);
+  text("Online", 45, 85);
 }
 
 
