@@ -10,11 +10,11 @@ void setup() {
 
 void draw() {
   background(20);
-  int[] counts = new int[5];
+  int[] counts = new int[5];  // how many circles so far for each day
 
   for (TableRow row : table.rows()) {
     int d = dayIndex(row.getString("day"));
-    if (d == -1) continue;
+    if (d == -1) continue;  // skip anything that isn't Mon-Fri
 
     float mins = row.getFloat("duration");
     float x = map(d, 0, 4, 120, width - 120);
@@ -46,9 +46,14 @@ void draw() {
   ellipse(30, 80, 14, 14);
   fill(255);
   text("Online", 45, 85);
+  
+   fill(255);
+  textAlign(CENTER);
+  textSize(20);
+  text("My daydreams in uni lessons", width / 2, 35);
 }
 
-
+// Methods that return a value
 int dayIndex(String day) {
   for (int i = 0; i < days.length; i++) {
     if (days[i].equals(day)) {
