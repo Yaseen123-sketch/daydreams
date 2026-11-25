@@ -2,7 +2,7 @@ Table table;
 String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
 
 void setup() {
-  size(900, 650);
+  size(900, 800);
   table = loadTable("daydreams.csv", "header");
   println("Rows loaded: " + table.getRowCount());
   noStroke();
@@ -18,7 +18,7 @@ void draw() {
 
     float mins = row.getFloat("duration");
     float x = map(d, 0, 4, 120, width - 120);
-    float y = height - 40 - counts[d] * 28;
+    float y = height - 40 - counts[d] * 20;
     counts[d]++;
 
     fill(lessonColor(row.getString("lesson_type")));
